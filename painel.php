@@ -518,7 +518,7 @@ padding: 20px;
 <h1>Estoque e Inventário</h1>
 <div class="product-count">
 <div class="count-number"><?= $result->num_rows ?></div>
-<div class="count-text">produtos no<br>estoque</div>
+<div class="count-text">Produtos no<br>estoque</div>
 </div>
 </div>
 

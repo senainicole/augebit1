@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../xampp/htdocs/estoque/fonts"
+		},
+		{
+			"path": "../../../../xampp/htdocs/estoque/login"
+		}
+	],
+	"settings": {}
+}
