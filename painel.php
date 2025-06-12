@@ -32,6 +32,7 @@ $result = $conn->query($sql);
 <head>
 <meta charset="UTF-8" />
 <title>Estoque e Inventário</title>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 <style>
 /* ========== RESET E BASE ========== */
 
@@ -47,7 +48,6 @@ Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 background-color: var(--bg-color);
 color: var(--text-color);
 line-height: 1.6;
-transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ========== VARIÁVEIS CSS - CORES DOS TEMAS ========== */
@@ -72,12 +72,12 @@ transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 :root[data-theme="dark"] {
---bg-color: #555586;
---card-bg: #40407a;
+--bg-color: #5a548a;
+--card-bg: #5a548a;
 --text-color: #ffffff;
 --text-secondary: #b8b8cc;
 --border-color: #555586;
---header-bg: #555586;
+--header-bg:#5a548a;
 --table-header-bg: #40407a;
 --gradient-start: #667eea;
 --gradient-end: #764ba2;
@@ -99,7 +99,7 @@ align-items: center;
 padding: 15px 30px;
 background-color: var(--header-bg);
 margin-bottom: 0;
-transition: background-color 0.3s ease;
+
 }
 
 .logo {
@@ -107,12 +107,26 @@ display: flex;
 align-items: center;
 }
 
-.logo img {
-height: 180px;
-width: auto;
-object-fit: contain;
-transition: opacity 0.3s ease;
+#logo-light {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  
+  /* Aqui, só estiliza o logo claro */
 }
+#logo-dark {
+  height: 58px;
+  width: auto;
+  object-fit: cover;
+
+  /* Ajuste fino de posição */
+  margin-top: 4px;    /* ↑ Mais alto: diminui / ↓ Mais baixo: aumenta */
+  margin-left: 2px;   /* ← Mais à esquerda: mais negativo / → Mais à direita: menos negativo */
+
+
+  /* Aqui, só estiliza o logo escuro */
+}
+
 
 .header-controls {
 display: flex;
@@ -222,56 +236,58 @@ margin-bottom: 25px;
 }
 
 .btn-primary {
-background-color: var(--gradient-start);
-color: white;
-border: none;
-padding: 12px 20px;
-border-radius: 8px;
-font-weight: 600;
-text-decoration: none;
-display: inline-flex;
-align-items: center;
-gap: 8px;
-font-size: 14px;
-transition: all 0.3s ease;
-/* Removido: box-shadow para eliminar relevo */
+  background-color: #667eea;  /* Cor de fundo */
+  color: #ffffff;             /* Cor do texto */
+  border: 1px solid #667eea;  /* Cor da borda */
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-background-color: var(--gradient-end);
-transform: translateY(-1px);
+  background-color: #5e3d91;   /* Cor ao passar o mouse */
+  border-color: #ffffff;
+  transform: translateY(-1px);
 }
 
+
 .btn-secondary {
-background-color: var(--card-bg);
-color: var(--text-secondary);
-border: 1px solid var(--border-color);
-padding: 12px 20px;
-border-radius: 8px;
-font-weight: 500;
-text-decoration: none;
-display: inline-flex;
-align-items: center;
-gap: 8px;
-font-size: 14px;
-transition: all 0.3s ease;
+  background-color: #667eea;  /* Cor de fundo */
+  color: #ffffff;             /* Cor do texto */
+  border: 1px solid #667eea;  /* Cor da borda */
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-background-color: var(--hover-bg);
-border-color: var(--text-secondary);
-transform: translateY(-1px);
+  background-color: #5e3d91;   /* Cor quando passar o mouse */
+  border-color: #ffffff;
+  transform: translateY(-1px);
 }
+
 
 /* ========== CONTAINER DA TABELA ========== */
 .table-container {
-background-color: var(--card-bg);
-border-radius: 12px;
-/* Removido: box-shadow para eliminar relevo */
-border: 1px solid var(--border-color);
-overflow: hidden;
-transition: background-color 0.3s ease;
+  background-color: #667eea; /* cor nova da tabela */
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
 }
+
 
 /* ========== FILTROS SUPERIORES ========== */
 .filters-section {
@@ -322,39 +338,40 @@ color: #999;
 
 /* ========== CABEÇALHO DA TABELA ========== */
 .table-header {
-background-color: var(--table-header-bg);
-padding: 15px 30px;
-display: grid;
-grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 0.5fr;
-gap: 20px;
-align-items: center;
-font-weight: 600;
-color: var(--text-secondary);
-font-size: 13px;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-transition: background-color 0.3s ease;
-border-bottom: 1px solid var(--border-color);
+  background-color: #667eea;           /* cor de fundo do cabeçalho */
+  padding: 15px 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 0.5fr;
+  gap: 20px;
+  align-items: center;
+  font-weight: 600;
+  color: #ffff;                      /* cor do texto */
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #667eea;   /* cor da borda */
 }
 
 /* ========== LINHAS DA TABELA ========== */
 .table-row {
-padding: 20px 30px;
-display: grid;
-grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 0.5fr;
-gap: 20px;
-align-items: center;
-border-bottom: 1px solid var(--border-color);
-transition: background-color 0.2s ease;
+  padding: 20px 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr 0.5fr;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid  #667eea;   /* cor da borda */
+  transition: background-color 0.2s ease;
 }
 
 .table-row:hover {
-background-color: var(--hover-bg);
+  background-color: #5e3d91;           /* cor ao passar o mouse */
 }
 
 .table-row:last-child {
-border-bottom: none;
+  border-bottom: none;
 }
+
 
 /* ========== CÉLULAS DA TABELA ========== */
 .product-cell {
@@ -499,9 +516,9 @@ padding: 20px;
 <header class="main-header">
 <div class="logo">
 <!-- LOGO PARA MODO CLARO -->
-<img id="logo-light" src="img/logoclaro2.png" alt="Logo Modo Claro" style="display: block;">
+<img id="logo-light" src="img/logo3.png" alt="Logo Modo Claro" style="display: block;">
 <!-- LOGO PARA MODO ESCURO -->
-<img id="logo-dark" src="img/logoescura1.png" alt="Logo Modo Escuro" style="display: none;">
+<img id="logo-dark" src="img/logo9.png" alt="Logo Modo Escuro" style="display: none;">
 </div>
 <div class="header-controls">
 <div class="theme-toggle-container">

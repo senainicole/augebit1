@@ -74,6 +74,7 @@ if ($eventos_result && $eventos_result->num_rows > 0) {
         ['id' => null, 'data' => '17', 'mes' => 'Sex', 'evento' => 'Reunião estoque', 'hora' => '9:00', 'descricao' => ''],
     ];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +83,9 @@ if ($eventos_result && $eventos_result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Augebit</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -662,6 +665,7 @@ if ($eventos_result && $eventos_result->num_rows > 0) {
     <div class="container">
         <header class="header">
             <div class="logo">AUGEBIT</div>
+            <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
             <div class="user-info">
                 <button class="theme-toggle" onclick="toggleTheme('dark')" id="darkBtn">Escuro</button>
                 <button class="theme-toggle active" onclick="toggleTheme('light')" id="lightBtn">Claro</button>
