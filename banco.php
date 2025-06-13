@@ -1,14 +1,12 @@
 <?php
 $host = "localhost";
-$user = "root"; // Altere se necessário
-$pass = "";     // Altere se tiver senha
+$user = "root";
+$pass = "";
 $dbname = "augebit";
 
-// Criar conexão
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// Verificar conexão
 if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+    die("Erro na conexão: " . $conn->connect_error);
 }
 ?>

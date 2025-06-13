@@ -29,6 +29,7 @@ $conn->close();
 <div class="form-container">
     <form method="POST" action="inserir_movimentacoes.php">
         <h2>Registrar Movimentação</h2>
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
         <label for="item_id">ID do Item:</label>
         <input type="number" id="item_id" name="item_id" required>
